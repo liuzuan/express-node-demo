@@ -3,6 +3,7 @@
 
 <head>
     <title>用户列表页面</title>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 </head>
 
 <body>
@@ -24,12 +25,24 @@
                 <td>
                     <div>
                         <a href="/users/edit/<%= user[i]._id %>"> 编辑 </a>
-                        <a href="#" class="del" data-id="<%= list[i]._id %>"> 删除 </a>
+                        <a href="#" class="del" data-id="<%= user[i]._id %>"> 删除 </a>
                     </div>
                 </td>
             </tr>
             <% } %>
     </table>
+    <script>
+        $('.del').on('click', function () {
+            var id = $(this).data('id');
+            $.ajax({
+                url: '/users/del?id=' + id,
+                type: 'delete',
+                success: function (res) {
+                    window.location.reload();
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>

@@ -19,7 +19,6 @@ router.get('/add', (req, res, next) => {
 });
 
 router.post('/add', (req, res, next) => {
-    console.log(req)
     var newUser = new userModel({
         username: req.body.username,
         email: req.body.email

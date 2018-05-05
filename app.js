@@ -7,6 +7,8 @@ import logger from 'morgan';
 import index from './routes/index';
 import users from './routes/users';
 
+// import model from './models/userModel'
+// model();
 let app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,7 +36,8 @@ app.use((err, req, res, next) => {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render("error",{error: err});
+  // console.log(err)
 });
 
 module.exports = app;
