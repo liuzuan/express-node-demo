@@ -1,9 +1,7 @@
 import mongoose from 'mongoose';
 
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/userdb', {
-    useMongoClient: true
-});
+// mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost:27017/userdb');
 var userSchema = new mongoose.Schema({
     username: String,
     email: String

@@ -3,22 +3,24 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www  --exec babel-node",
-    "debug": "nodemon --inspect ./bin/www  --exec babel-node"
+    "start": "cross-env NODE_ENV=production nodemon ./bin/www  --exec babel-node",
+    "debug": "cross-env NODE_ENV=production nodemon --inspect ./bin/www  --exec babel-node"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "pug": "^2.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
+    "cross-env": "^5.1.4",
     "ejs": "^2.5.9",
-    "mongoose": "~4.13.0",
+    "mongoose": "^5.0.17",
     "nodemon": "^1.17.3"
   }
 }
