@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-import app from '../app';
+import app from './app';
 import _debug from 'debug';
 import http from 'http';
 var debug = _debug('node-express-demo:server');

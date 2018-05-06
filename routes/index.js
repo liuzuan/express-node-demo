@@ -1,8 +1,11 @@
-import express from 'express';
-let router = express.Router();
-/* GET home page. */
-router.get('/', (req, res, next) => {
-  res.render('index', { title: '首页' });
-});
+import home from "./home";
+import api from "./api";
+import users from "./users";
+import resume from './resume';
 
-module.exports = router;
+export default app => {
+  app.use('/', home);
+  app.use('/api', api);
+  app.use('/users', users);
+  app.use('/resume', resume);
+}

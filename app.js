@@ -4,11 +4,10 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import userModel from './models/userModel';
+import router from './routes/index';
+import db from './mongodb/db';
+const app = express();
 
-import index from './routes/index';
-import users from './routes/users';
-
-let app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -17,31 +16,13 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: false
 }));
-app.use(cookieParser());
+app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
-
+router(app);
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  if (req.path === '/api/users/') {
-    userModel.find((err, data) => {
-      if (err) {
-        return console.log(err)
-      }
-      res.send({
-        'code': 0,
-        'data': data,
-        'statistic': {
-          'count': data.length,
-        }
-      })
-    })
-    
-  } else {
     next(createError(404));
-  }
 });
 
 // error handler
@@ -57,4 +38,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-module.exports = app;
+export default app;

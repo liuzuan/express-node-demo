@@ -1,6 +1,7 @@
 import express from 'express';
-let router = express.Router();
 import userModel from '../models/userModel.js';
+
+const router = express.Router();
 
 router.get('/', (req, res, next) => {
     userModel.find((err, data) => {
@@ -19,7 +20,7 @@ router.get('/add', (req, res, next) => {
 });
 
 router.post('/add', (req, res, next) => {
-    var newUser = new userModel({
+    let newUser = new userModel({
         username: req.body.username,
         email: req.body.email
     })
@@ -31,33 +32,33 @@ router.post('/add', (req, res, next) => {
     })
 });
 
-router.get('/edit/:id', function (req, res, next) {
-    var id = req.params.id;
+router.get('/edit/:id', (req, res, next) => {
+    let id = req.params.id;
     userModel.findOne({
         _id: id
-    }, function (err, data) {
+    }, (err, data) => {
         res.render('userEdit', {
             user: data
         })
     })
 });
 
-router.post('/update', function (req, res, next) {
+router.post('/update', (req, res, next) => {
     var id = req.body.id;
-    userModel.findById(id, function (err, data) {
+    userModel.findById(id, (err, data) => {
         if (err) {
             return console.log(err);
         }
         data.username = req.body.username;
         data.email = req.body.email;
-        data.save(function (err) {
+        data.save((err) => {
             res.redirect('/users/');
         })
     })
 });
 
 router.delete('/del', (req, res) => {
-    var id = req.query.id;
+    let id = req.query.id;
     userModel.remove({
         _id: id
     }, (err, data) => {
@@ -70,4 +71,5 @@ router.delete('/del', (req, res) => {
         });
     })
 })
-module.exports = router;
+
+export default router;

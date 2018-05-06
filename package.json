@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "cross-env NODE_ENV=production nodemon ./bin/www  --exec babel-node",
-    "debug": "cross-env NODE_ENV=production nodemon --inspect ./bin/www  --exec babel-node"
+    "start": "cross-env NODE_ENV=production nodemon ./index  --exec babel-node",
+    "debug": "cross-env NODE_ENV=production nodemon --inspect ./index  --exec babel-node"
   },
   "dependencies": {
+    "chalk": "^2.4.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
