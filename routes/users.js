@@ -56,7 +56,6 @@ router.post('/update', (req, res, next) => {
         })
     })
 });
-
 router.delete('/del', (req, res) => {
     let id = req.query.id;
     userModel.remove({

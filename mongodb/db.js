@@ -21,13 +21,9 @@ db.on('error', (error) => {
 
 db.on('close', () => {
     console.log(
-        chalk.red('数据库断开，重新连接数据库')
+        chalk.red('数据库断开，重新连接数据库...')
     );
-    mongoose.connect('mongodb://localhost:27017/userdb', {
-        server: {
-            auto_reconnect: true
-        }
-    });
+    mongoose.connect('mongodb://localhost:27017/userdb');
 });
 
-export default mongoose;
+export default db;
