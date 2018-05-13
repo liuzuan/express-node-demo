@@ -6,20 +6,16 @@ const router = express.Router();
 router.get('/users', (req, res, next) => {
     userModel.find((err, data) => {
         if (err) {
-            return console.log(err)
+            return console.log(err);
         }
         res.send({
-            'data': data,
-            'status': 200,
-            'statistic': {
-                'count': data.length
+            data: data,
+            status: 200,
+            statistic: {
+                count: data.length
             }
-        })
-
-    })
-})
-
-
-
+        });
+    });
+});
 
 export default router;

@@ -1,9 +1,9 @@
-import express from 'express';
+import express from "express";
 const router = express.Router();
 /* GET home page. */
-router.get('/', (req, res, next) => {
-    res.render('index', {
-        title: '首页'
+router.get("/", (req, res, next) => {
+    res.render("index", {
+        title: "首页"
     });
 });
 
